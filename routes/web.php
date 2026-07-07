@@ -1,51 +1,35 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\BeritaController;
+use App\Http\Controllers\Frontend\KontakController;
 use App\Http\Controllers\Admin\DashboardController;
 
 // ─────────────────────────────────────────
+// FRONTEND — Halaman Publik
+// ─────────────────────────────────────────
+Route::get('/',          [HomeController::class, 'index'])->name('home');
+Route::get('/profil',    [HomeController::class, 'profil'])->name('profil');
+Route::get('/galeri',    [HomeController::class, 'galeri'])->name('galeri');
+Route::get('/potensi',   [HomeController::class, 'potensi'])->name('potensi');
 
-// FRONTEND (Halaman Publik)
+Route::get('/berita',           [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/{slug}',    [BeritaController::class, 'show'])->name('berita.show');
+
+Route::get('/kontak',           [KontakController::class, 'index'])->name('kontak');
+Route::post('/kontak',          [KontakController::class, 'store'])->name('kontak.store');
 
 // ─────────────────────────────────────────
-
-Route::get('/', function () {
-
-    return view('frontend.home');
-
-})->name('home');
-
+// ADMIN — Protected
 // ─────────────────────────────────────────
-
-// ADMIN (Protected by isAdmin middleware)
-
-// ─────────────────────────────────────────
-
 Route::prefix('admin')
-
     ->name('admin.')
-
     ->middleware(['auth', 'isAdmin'])
-
     ->group(function () {
-
-        // Dashboard
-
-        Route::get('/dashboard', [DashboardController::class, 'index'])
-
-            ->name('dashboard');
-
-        // Nanti ditambah route CRUD lainnya di fase berikutnya:
-
-        // Route::resource('berita', BeritaController::class);
-
-        // Route::resource('galeri', GaleriController::class);
-
-        // dst...
-
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        // CRUD routes ditambah di fase berikutnya
+        Route::resource('berita', \App\Http\Controllers\Admin\BeritaController::class);
     });
-
-// Auth routes (login, logout) dari Breeze
 
 require __DIR__.'/auth.php';

@@ -240,7 +240,7 @@
 
         <div class="sidebar-section">Konten</div>
 
-        <a href="#" class="nav-link {{ request()->routeIs('admin.berita*') ? 'active' : '' }}">
+        <a href="{{ route('admin.berita.index') }}" class="nav-link {{ request()->routeIs('admin.berita*') ? 'active' : '' }}">
 
             <i class="fas fa-newspaper"></i> Berita
 
