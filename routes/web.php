@@ -30,6 +30,9 @@ Route::prefix('admin')
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         // CRUD routes ditambah di fase berikutnya
         Route::resource('berita', \App\Http\Controllers\Admin\BeritaController::class);
+        Route::resource('agenda', \App\Http\Controllers\Admin\AgendaController::class);
+        Route::resource('galeri', \App\Http\Controllers\Admin\GaleriController::class);
+        Route::resource('potensi', \App\Http\Controllers\Admin\PotensiController::class);
     });
 
 require __DIR__.'/auth.php';

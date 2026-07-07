@@ -246,19 +246,19 @@
 
         </a>
 
-        <a href="#" class="nav-link {{ request()->routeIs('admin.galeri*') ? 'active' : '' }}">
+        <a href="{{ route('admin.galeri.index') }}" class="nav-link {{ request()->routeIs('admin.galeri*') ? 'active' : '' }}">
 
             <i class="fas fa-images"></i> Galeri
 
         </a>
 
-        <a href="#" class="nav-link {{ request()->routeIs('admin.potensi*') ? 'active' : '' }}">
+        <a href="{{ route('admin.potensi.index') }}" class="nav-link {{ request()->routeIs('admin.potensi*') ? 'active' : '' }}">
 
             <i class="fas fa-leaf"></i> Potensi Desa
 
         </a>
 
-        <a href="#" class="nav-link {{ request()->routeIs('admin.agenda*') ? 'active' : '' }}">
+        <a href="{{ route('admin.agenda.index') }}" class="nav-link {{ request()->routeIs('admin.agenda*') ? 'active' : '' }}">
 
             <i class="fas fa-calendar-alt"></i> Agenda
 
