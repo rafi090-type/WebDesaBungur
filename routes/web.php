@@ -5,6 +5,9 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BeritaController;
 use App\Http\Controllers\Frontend\KontakController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PerangkatController;
+use App\Http\Controllers\Admin\ProfilController;
+use App\Http\Controllers\Admin\SettingController;
 
 // ─────────────────────────────────────────
 // FRONTEND — Halaman Publik
@@ -33,6 +36,13 @@ Route::prefix('admin')
         Route::resource('agenda', \App\Http\Controllers\Admin\AgendaController::class);
         Route::resource('galeri', \App\Http\Controllers\Admin\GaleriController::class);
         Route::resource('potensi', \App\Http\Controllers\Admin\PotensiController::class);
+        Route::resource('perangkat', \App\Http\Controllers\Admin\PerangkatController::class);
+
+        Route::get('profil', [ProfilController::class, 'index'])->name('profil.index');
+        Route::put('profil', [ProfilController::class, 'update'])->name('profil.update');
+
+        Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
+        Route::put('setting', [SettingController::class, 'update'])->name('setting.update');
     });
 
 require __DIR__.'/auth.php';

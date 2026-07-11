@@ -272,13 +272,13 @@
 
         <div class="sidebar-section">Desa</div>
 
-        <a href="#" class="nav-link {{ request()->routeIs('admin.profil*') ? 'active' : '' }}">
+        <a href="{{ route('admin.profil.index') }}" class="nav-link {{ request()->routeIs('admin.profil*') ? 'active' : '' }}">
 
             <i class="fas fa-info-circle"></i> Profil Desa
 
         </a>
 
-        <a href="#" class="nav-link {{ request()->routeIs('admin.perangkat*') ? 'active' : '' }}">
+        <a href="{{ route('admin.perangkat.index') }}" class="nav-link {{ request()->routeIs('admin.perangkat*') ? 'active' : '' }}">
 
             <i class="fas fa-users"></i> Perangkat Desa
 
@@ -292,7 +292,7 @@
 
         </a>
 
-        <a href="#" class="nav-link {{ request()->routeIs('admin.setting*') ? 'active' : '' }}">
+        <a href="{{ route('admin.setting.index') }}" class="nav-link {{ request()->routeIs('admin.setting*') ? 'active' : '' }}">
 
             <i class="fas fa-cog"></i> Pengaturan
 
