@@ -135,7 +135,7 @@
                        href="#" data-bs-toggle="dropdown">Profil</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('profil') }}">Sejarah & Visi Misi</a></li>
-                        <li><a class="dropdown-item" href="{{ route('profil') }}#perangkat">Perangkat Desa</a></li>
+                        <li><a class="dropdown-item {{ request()->routeIs('perangkat') ? 'active' : '' }}" href="{{ route('perangkat') }}">Perangkat Desa</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -153,6 +153,14 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('kontak') ? 'active' : '' }}"
                        href="{{ route('kontak') }}">Kontak</a>
+                </li>
+                {{-- Statistik: arahkan ke section di Home, bukan route terpisah --}}
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('statistik') ? 'active' : '' }}" href="{{ route('statistik') }}">Statistik</a>
+                </li>
+                {{-- Peta: arahkan ke section di Kontak, bukan route terpisah --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('kontak') }}#peta">Peta Desa</a>
                 </li>
             </ul>
         </div>
@@ -176,6 +184,9 @@
                 <a href="{{ route('profil') }}"       class="footer-link">Profil Desa</a>
                 <a href="{{ route('potensi') }}"      class="footer-link">Potensi</a>
                 <a href="{{ route('berita.index') }}" class="footer-link">Berita</a>
+                {{-- PERBAIKAN: gunakan anchor ke section, bukan route terpisah --}}
+                <a href="{{ route('statistik') }}" class="footer-link">Statistik</a>
+                <a href="{{ route('kontak') }}#peta"    class="footer-link">Peta Desa</a>
             </div>
             <div class="col-md-2">
                 <div class="footer-heading">Layanan</div>
@@ -211,7 +222,7 @@
 @if(session('success'))
 <script>
     Swal.fire({ icon:'success', title:'Berhasil!',
-        text:'{{ session("success") }}', timer:3000, showConfirmButton:false });
+        text:'{{ addslashes(session("success")) }}', timer:3000, showConfirmButton:false });
 </script>
 @endif
 

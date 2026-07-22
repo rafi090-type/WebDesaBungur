@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+    public function edit()
+    {
+        // Ambil semua setting, jadikan array key => value
+        $settings = Setting::all()->pluck('value', 'key');
+        return view('admin.setting.edit', compact('settings'));
+    }
+
     public function index()
     {
         // Ambil semua setting, jadikan array key => value
@@ -40,7 +47,7 @@ class SettingController extends Controller
             );
         }
 
-        return redirect()->route('admin.setting.index')
+        return redirect()->route('admin.setting.edit')
                          ->with('success', 'Pengaturan berhasil disimpan!');
     }
 }
