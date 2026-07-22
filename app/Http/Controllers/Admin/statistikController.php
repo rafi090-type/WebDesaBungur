@@ -30,4 +30,34 @@ class StatistikController extends Controller
         return redirect()->route('admin.statistik.edit')
                          ->with('success', 'Data statistik berhasil diperbarui!');
     }
+
+    public function create()
+    {
+        $kategori = ['penduduk', 'agama', 'pekerjaan', 'pendidikan'];
+        return view('admin.statistik.create', compact('kategori'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'kategori' => 'required|in:penduduk,agama,pekerjaan,pendidikan',
+            'label' => 'required|string|max:255',
+            'jumlah' => 'required|integer|min:0',
+            'urutan' => 'required|integer|min:0',
+        ]);
+
+        Statistik::create($validated);
+
+        return redirect()->route('admin.statistik.edit')
+                         ->with('success', 'Data statistik baru berhasil ditambahkan!');
+    }
+
+    public function destroy($id)
+    {
+        $statistik = Statistik::findOrFail($id);
+        $statistik->delete();
+
+        return redirect()->route('admin.statistik.edit')
+                         ->with('success', 'Data statistik berhasil dihapus!');
+    }
 }

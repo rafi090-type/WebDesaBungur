@@ -4,6 +4,16 @@
 
 @section('content')
 
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="fw-bold mb-0" style="color:#1a4731;">Edit Data Statistik Desa</h5>
+    <a href="{{ route('admin.statistik.create') }}"
+       class="btn"
+       style="background:#1a4731;color:#fff;border:none;padding:10px 24px;
+              border-radius:8px;font-weight:700;font-size:14px;">
+        <i class="fas fa-plus me-2"></i> Tambah Data Baru
+    </a>
+</div>
+
 <form action="{{ route('admin.statistik.update') }}" method="POST">
     @csrf @method('PUT')
 
@@ -24,6 +34,16 @@
                                value="{{ $item->jumlah }}"
                                class="form-control" min="0" style="max-width:140px;">
                         <span style="font-size:12px;color:#aaa;">orang</span>
+                        <form action="{{ route('admin.statistik.destroy', $item->id) }}"
+                              method="POST"
+                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                            @csrf @method('DELETE')
+                            <button type="submit"
+                                    class="btn btn-sm btn-danger"
+                                    style="padding:6px 12px;font-size:12px;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     </div>
                     @endforeach
                 </div>
