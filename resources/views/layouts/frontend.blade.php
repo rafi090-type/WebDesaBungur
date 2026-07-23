@@ -200,7 +200,7 @@
                     <i class="fas fa-map-marker-alt me-2" style="color:var(--emas);"></i>
                     Desa Bungur, Kec. Rangsang Pesisir<br>
                     <i class="fas fa-phone me-2" style="color:var(--emas);"></i>
-                    +62 812-XXXX-XXXX
+                    +62 853-8221-9975
                 </p>
             </div>
         </div>
@@ -208,7 +208,7 @@
         <div class="footer-bottom">
             <span>© {{ date('Y') }} Desa Bungur · Dikembangkan oleh Mahasiswa KKN UNRI</span>
             <div class="sosmed">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>

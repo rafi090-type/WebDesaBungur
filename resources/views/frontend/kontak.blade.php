@@ -28,7 +28,7 @@
 
                 @foreach([
                     ['fas fa-map-marker-alt', 'Alamat', 'Desa Bungur, Kec. Rangsang Pesisir, Kab. Kepulauan Meranti, Riau 28772'],
-                    ['fas fa-phone', 'Telepon', '+62 812-XXXX-XXXX'],
+                    ['fas fa-phone', 'Telepon', '+62 853-8221-9975'],
                     ['fas fa-clock', 'Jam Pelayanan', 'Senin – Jumat: 08.00 – 16.00 WIB'],
                 ] as [$icon, $label, $value])
                 <div style="display:flex;gap:14px;margin-bottom:24px;">
