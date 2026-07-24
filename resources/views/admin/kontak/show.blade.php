@@ -55,21 +55,6 @@
         </div>
 
         <div class="d-flex gap-2">
-            @if($kontak->sudah_dibaca)
-                <form action="{{ route('admin.kontak.mark-unread', $kontak->id) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-warning">
-                        <i class="fas fa-envelope me-2"></i> Tandai Belum Dibaca
-                    </button>
-                </form>
-            @else
-                <form action="{{ route('admin.kontak.mark-read', $kontak->id) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-success">
-                        <i class="fas fa-check me-2"></i> Tandai Sudah Dibaca
-                    </button>
-                </form>
-            @endif
             <form action="{{ route('admin.kontak.destroy', $kontak->id) }}"
                   method="POST"
                   onsubmit="return confirm('Apakah Anda yakin ingin menghapus pesan ini?');">

@@ -147,6 +147,10 @@
                        href="{{ route('berita.index') }}">Berita</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('download*') ? 'active' : '' }}"
+                       href="{{ route('download.index') }}">Download</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('galeri') ? 'active' : '' }}"
                        href="{{ route('galeri') }}">Galeri</a>
                 </li>
@@ -184,6 +188,7 @@
                 <a href="{{ route('profil') }}"       class="footer-link">Profil Desa</a>
                 <a href="{{ route('potensi') }}"      class="footer-link">Potensi</a>
                 <a href="{{ route('berita.index') }}" class="footer-link">Berita</a>
+                <a href="{{ route('download.index') }}" class="footer-link">Download</a>
                 {{-- PERBAIKAN: gunakan anchor ke section, bukan route terpisah --}}
                 <a href="{{ route('statistik') }}" class="footer-link">Statistik</a>
                 <a href="{{ route('kontak') }}#peta"    class="footer-link">Peta Desa</a>

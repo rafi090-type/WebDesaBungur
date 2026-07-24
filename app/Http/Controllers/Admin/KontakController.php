@@ -4,52 +4,31 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kontak;
-use Illuminate\Http\Request;
 
 class KontakController extends Controller
 {
     public function index()
     {
-        $kontak = Kontak::orderBy('created_at', 'desc')->get();
-        return view('admin.kontak.index', compact('kontak'));
+        $pesan = Kontak::latest()->paginate(15);
+        $totalDibaca = Kontak::where('sudah_dibaca', true)->count();
+        $totalBelumDibaca = Kontak::where('sudah_dibaca', false)->count();
+        
+        return view('admin.kontak.index', compact('pesan', 'totalDibaca', 'totalBelumDibaca'));
     }
 
-    public function show($id)
+    public function show(Kontak $kontak)
     {
-        $kontak = Kontak::findOrFail($id);
-        
-        // Tandai sebagai sudah dibaca
+        // Tandai sudah dibaca
         if (!$kontak->sudah_dibaca) {
             $kontak->update(['sudah_dibaca' => true]);
         }
-        
         return view('admin.kontak.show', compact('kontak'));
     }
 
-    public function destroy($id)
+    public function destroy(Kontak $kontak)
     {
-        $kontak = Kontak::findOrFail($id);
         $kontak->delete();
-
         return redirect()->route('admin.kontak.index')
                          ->with('success', 'Pesan berhasil dihapus!');
-    }
-
-    public function markAsRead($id)
-    {
-        $kontak = Kontak::findOrFail($id);
-        $kontak->update(['sudah_dibaca' => true]);
-
-        return redirect()->route('admin.kontak.index')
-                         ->with('success', 'Pesan ditandai sebagai sudah dibaca!');
-    }
-
-    public function markAsUnread($id)
-    {
-        $kontak = Kontak::findOrFail($id);
-        $kontak->update(['sudah_dibaca' => false]);
-
-        return redirect()->route('admin.kontak.index')
-                         ->with('success', 'Pesan ditandai sebagai belum dibaca!');
     }
 }

@@ -8,12 +8,12 @@
     <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
         <h6 class="fw-bold mb-0">✉️ Daftar Pesan Masuk</h6>
         <div>
-            <span class="badge bg-success">{{ $kontak->where('sudah_dibaca', true)->count() }} Dibaca</span>
-            <span class="badge bg-warning text-dark">{{ $kontak->where('sudah_dibaca', false)->count() }} Belum Dibaca</span>
+            <span class="badge bg-success">{{ $totalDibaca }} Dibaca</span>
+            <span class="badge bg-warning text-dark">{{ $totalBelumDibaca }} Belum Dibaca</span>
         </div>
     </div>
     <div class="card-body p-0">
-        @if($kontak->isEmpty())
+        @if($pesan->isEmpty())
             <div class="text-center py-5">
                 <i class="fas fa-envelope-open" style="font-size:48px;color:#ddd;"></i>
                 <p class="text-muted mt-3">Belum ada pesan masuk</p>
@@ -32,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($kontak as $k)
+                        @foreach($pesan as $k)
                         <tr class="{{ !$k->sudah_dibaca ? 'table-light' : '' }}">
                             <td class="ps-3">
                                 @if($k->sudah_dibaca)
@@ -52,29 +52,6 @@
                                        title="Lihat Detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    @if($k->sudah_dibaca)
-                                        <form action="{{ route('admin.kontak.mark-unread', $k->id) }}"
-                                              method="POST"
-                                              style="display:inline;">
-                                            @csrf
-                                            <button type="submit"
-                                                    class="btn btn-warning"
-                                                    title="Tandai Belum Dibaca">
-                                                <i class="fas fa-envelope"></i>
-                                            </button>
-                                        </form>
-                                    @else
-                                        <form action="{{ route('admin.kontak.mark-read', $k->id) }}"
-                                              method="POST"
-                                              style="display:inline;">
-                                            @csrf
-                                            <button type="submit"
-                                                    class="btn btn-success"
-                                                    title="Tandai Dibaca">
-                                                <i class="fas fa-check"></i>
-                                            </button>
-                                        </form>
-                                    @endif
                                     <form action="{{ route('admin.kontak.destroy', $k->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Apakah Anda yakin ingin menghapus pesan ini?');"
@@ -95,6 +72,10 @@
             </div>
         @endif
     </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    {{ $pesan->links() }}
 </div>
 
 @endsection
