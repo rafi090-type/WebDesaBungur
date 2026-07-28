@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom component utilities for smoother, responsive animations */
+@layer components {
+	.btn {
+		@apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium shadow-sm transition transform motion-reduce:transition-none;
+	}
+
+	.btn-primary {
+		@apply btn bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:scale-95;
+	}
+
+	.card {
+		@apply bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:translate-y-1 motion-reduce:transform-none;
+	}
+
+	.modal-backdrop {
+		@apply absolute inset-0 bg-gray-700/60 backdrop-blur-sm;
+	}
+}
+
+@layer utilities {
+	.smooth-shadow {
+		box-shadow: 0 8px 30px rgba(2,6,23,0.08);
+	}
+}
