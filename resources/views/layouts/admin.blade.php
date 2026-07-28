@@ -107,8 +107,7 @@
            class="nav-link {{ request()->routeIs('admin.agenda*') ? 'active' : '' }}">
             <i class="fas fa-calendar-alt"></i> Agenda
         </a>
-        {{-- Download: pakai # dulu, akan diaktifkan di Fase 9 --}}
-        <a href="#"
+        <a href="{{ route('admin.download.index') }}"
            class="nav-link {{ request()->routeIs('admin.download*') ? 'active' : '' }}">
             <i class="fas fa-download"></i> Download
         </a>

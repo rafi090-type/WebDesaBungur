@@ -40,12 +40,6 @@
                                 <div style="font-size:13px;color:#2d7a50;font-weight:600;margin-bottom:12px;">
                                     {{ $item->jabatan }}
                                 </div>
-                                @if($item->no_hp)
-                                <div style="font-size:12px;color:#666;">
-                                    <i class="fas fa-phone me-1" style="color:#c8a84b;"></i>
-                                    {{ $item->no_hp }}
-                                </div>
-                                @endif
                             </div>
                         </div>
                     </div>

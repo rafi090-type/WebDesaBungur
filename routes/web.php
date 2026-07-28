@@ -30,6 +30,7 @@ Route::get('/kontak',         [FrontendKontakController::class, 'index'])->name(
 Route::post('/kontak',        [FrontendKontakController::class, 'store'])->name('kontak.store');
 Route::get('/download',       [FrontendDownloadController::class, 'index'])->name('download.index');
 Route::get('/download/{download}', [FrontendDownloadController::class, 'download'])->name('download.file');
+Route::get('/peta',           [HomeController::class, 'peta'])->name('peta');
 
 // ADMIN
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(function () {

@@ -162,9 +162,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('statistik') ? 'active' : '' }}" href="{{ route('statistik') }}">Statistik</a>
                 </li>
-                {{-- Peta: arahkan ke section di Kontak, bukan route terpisah --}}
+                {{-- Peta: arahkan ke route peta --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('kontak') }}#peta">Peta Desa</a>
+                    <a class="nav-link {{ request()->routeIs('peta') ? 'active' : '' }}" href="{{ route('peta') }}">Peta Desa</a>
                 </li>
             </ul>
         </div>
@@ -191,7 +191,7 @@
                 <a href="{{ route('download.index') }}" class="footer-link">Download</a>
                 {{-- PERBAIKAN: gunakan anchor ke section, bukan route terpisah --}}
                 <a href="{{ route('statistik') }}" class="footer-link">Statistik</a>
-                <a href="{{ route('kontak') }}#peta"    class="footer-link">Peta Desa</a>
+                <a href="{{ route('peta') }}"    class="footer-link">Peta Desa</a>
             </div>
             <div class="col-md-2">
                 <div class="footer-heading">Layanan</div>
